@@ -1,0 +1,113 @@
+import React from "react";
+import AboutCards from "./AboutCards";
+import { FaDiagramProject } from "react-icons/fa6";
+import { GiGraduateCap } from "react-icons/gi";
+import { SiLeetcode } from "react-icons/si";
+import { BsFillPersonLinesFill } from "react-icons/bs";
+import { motion } from "framer-motion";
+
+// Example floating logos (replace src with your own or use skill icons)
+const floatingLogos = [
+  { src: "https://img.icons8.com/?size=100&id=wPohyHO_qO1a&format=png", alt: "React", size: 60, x: 0, y: 0 },
+  { src: "https://img.icons8.com/?size=100&id=20909&format=png", alt: "HTML5", size: 48, x: 80, y: 40 },
+  { src: "https://img.icons8.com/?size=100&id=7gdY5qNXaKC0&format=png", alt: "CSS3", size: 48, x: -70, y: 60 },
+  { src: "https://img.icons8.com/?size=100&id=Nkym0Ujb8VGI&format=png", alt: "JavaScript", size: 54, x: 60, y: -60 },
+  { src: "https://img.icons8.com/?size=100&id=38389&format=png", alt: "Git", size: 44, x: -60, y: -60 },
+];
+
+const Aboutme = () => {
+  return (
+    <div id="about" className="h-screen bg-[#0A0F1C] text-white py-25">
+      <h1 className="text-5xl font-bold px-10 mb-3 flex justify-center items-center">
+        About Me
+      </h1>
+      <div className="w-18 h-1 bg-gradient-to-r from-sky-400 to-blue-500 rounded mb-15 mx-auto"></div>
+      <div className="flex gap-10 px-10">
+        {/* Floating logos instead of image */}
+        <div className="relative w-[33vw] min-w-[220px] flex items-center justify-center ">
+          {floatingLogos.map((logo, i) => (
+            <motion.img
+              key={logo.alt}
+              src={logo.src}
+              alt={logo.alt}
+              className="absolute"
+              style={{
+                width: logo.size,
+                height: logo.size,
+                left: `calc(50% + ${logo.x}px)`,
+                top: `calc(50% + ${logo.y}px)`,
+                zIndex: 2,
+                filter: "drop-shadow(0 2px 12px #38BDF8aa)",
+              }}
+              animate={{
+                y: [
+                  0,
+                  Math.sin(i) * 18 + 10,
+                  Math.cos(i) * -18 - 10,
+                  0,
+                ],
+                x: [
+                  0,
+                  Math.cos(i) * 10,
+                  Math.sin(i) * -10,
+                  0,
+                ],
+                rotate: [0, 10, -10, 0],
+              }}
+              transition={{
+                duration: 5 + i,
+                repeat: Infinity,
+                repeatType: "loop",
+                ease: "easeInOut",
+                delay: i * 0.3,
+              }}
+            />
+          ))}
+        </div>
+        <div className="aboutme flex flex-col juustify-center">
+          <h2 className="text-3xl font-bold mb-4">
+            Full Stack Developer & Problem Solver
+          </h2>
+          <p className="text-[16px] mb-1">
+            I'm a curious and motivated B.Tech 2nd-year student with a growing
+            passion for full-stack web development. I enjoy turning ideas into
+            interactive experiences and love the process of building things from
+            the ground up—from planning to deployment.
+          </p>
+          <p className="text-[16px] mb-6">
+            In the past 2 years, I’ve worked on several small projects and one
+            major project that helped me apply what I’ve learned and improve my
+            skills. I’m continuously exploring technologies like React, Node.js,
+            and version control with Git to build modern, responsive, and
+            efficient applications.
+          </p>
+          <div className="cards flex gap-5">
+            <AboutCards
+              title="Experience"
+              description="2 Years"
+              logo={<BsFillPersonLinesFill size={35} color="#38BDF8" />}
+            />
+            <AboutCards
+              title="Education"
+              description="Pursuing B.Tech in CS"
+              logo={<GiGraduateCap size={38} color="#38BDF8" />}
+            />
+            <AboutCards
+              onClick={() => {
+                const section = document.getElementById("projects");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              title="Projects"
+              description="2+ Completed"
+              logo={<FaDiagramProject size={35} color="#38BDF8" />}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Aboutme;
