@@ -67,7 +67,7 @@ const Skills = () => (
     className="bg-black w-full min-h-[90vh] flex flex-col items-center justify-center py-16"
   >
     <h1 className="text-5xl text-white font-semibold mb-12">My Skills</h1>
-    <div className="relative mx-auto w-full max-w-xs h-60 md:max-w-[700px] md:h-[500px] lg:max-w-[1000px] overflow-hidden">
+    <div className="relative mx-auto w-full max-w-xs h-60 md:max-w-[700px] md:h-[500px] lg:max-w-[1000px] overflow-hidden md:overflow-visible">
       {skills.map((skill, i) => {
         const pos = positions[i % positions.length];
         return (
