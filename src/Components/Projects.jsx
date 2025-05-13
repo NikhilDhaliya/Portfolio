@@ -4,7 +4,7 @@ import ProjectCard from "./ProjectCard";
 const projects = [
   {
     image:
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
+      "https://i.pinimg.com/736x/94/f5/33/94f5338ac8094e7dc55f020643b00b3b.jpg",
     title: "Ochi Design Clone",
     description:
       "A responsive and animated website clone of Ochi.design showcasing modern web design using GSAP and ScrollTrigger animations.",
@@ -14,7 +14,7 @@ const projects = [
   },
   {
     image:
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
+      "https://i.pinimg.com/736x/94/f5/33/94f5338ac8094e7dc55f020643b00b3b.jpg",
     title: "PestiCare",
     description:
       "A web-based solution designed to help farmers and gardeners identify pests and recommend appropriate treatments. PestiCare aims to support sustainable farming by providing an accessible pest diagnosis and prevention tool.",
