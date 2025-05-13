@@ -3,7 +3,19 @@ import React from 'react'
 
 const Main = () => {
   return (
-    <div id='home' className='w-full min-h-[91vh] bg-[#0F1627] flex flex-col justify-center items-center md:items-start px-4 md:px-12 lg:px-24 py-12 md:py-0'>
+    <div id='home' className='relative w-full min-h-[91vh] bg-[#0F1627] flex flex-col justify-center items-center md:items-start px-4 md:px-12 lg:px-24 py-12 md:py-0'>
+      {/* Floating Ball */}
+      <div
+        className="
+          absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+          w-[140px] h-[140px]
+          sm:w-[180px] sm:h-[180px]
+          md:w-[250px] md:h-[250px]
+          lg:w-[320px] lg:h-[320px]
+          max-w-[80vw] max-h-[30vh]
+          rounded-full bg-sky-400/20 blur-3xl opacity-50 z-0 animate-floatBall pointer-events-none
+        "
+      ></div>
       {/* <FloatingComponent count={10} color="bg-sky-400/20" blur="blur-2xl" zIndex="z-0" /> */}
       <div className='flex flex-col gap-6 md:gap-8 max-w-4xl relative z-10'>
         <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-bold text-center md:text-left leading-tight'>
