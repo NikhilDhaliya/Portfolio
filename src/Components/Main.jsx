@@ -24,7 +24,7 @@ const Main = () => {
             download
             className='bg-[#0E1627] border border-[#38BDF8] text-[#38BDF8] font-semibold px-8 py-3 rounded-md cursor-pointer relative h-12 w-50 overflow-hidden shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-300 hover:before:-translate-x-60 flex items-center justify-center text-center'
           >
-            Resume
+            My Resume
           </a>
         </div>
       </div>
