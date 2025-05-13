@@ -2,23 +2,23 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div id="contact" className="min-h-screen bg-[#10182b] flex flex-col items-center justify-center px-4 py-12">
+    <div id="contact" className="min-h-screen bg-black flex flex-col items-center justify-center px-4 py-12">
       <h2 className="text-4xl md:text-5xl font-bold text-white mb-2 text-center">
         Contact Me
       </h2>
-      <div className="w-24 h-1 bg-gradient-to-r from-sky-400 to-blue-500 rounded mb-10 mx-auto"></div>
+      <div className="w-24 h-1 bg-gradient-to-r from-white to-gray-400 rounded mb-10 mx-auto"></div>
       <div className="flex flex-col md:flex-row gap-12 w-full max-w-5xl">
         {/* Left: Contact Info */}
         <div className="flex-1 flex flex-col justify-center">
           <h3 className="text-3xl font-bold text-white mb-4">Get in Touch</h3>
-          <p className="text-zinc-300 mb-8">
+          <p className="text-gray-300 mb-8">
             Feel free to reach out to me for any inquiries or collaborations.
           </p>
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-4">
-              <div className="bg-[#183153] p-3 rounded-full">
+              <div className="bg-gray-800 p-3 rounded-full">
                 <svg
-                  className="w-6 h-6 text-sky-400"
+                  className="w-6 h-6 text-white"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -38,13 +38,13 @@ const Contact = () => {
               </div>
               <div>
                 <div className="font-semibold text-white">Email</div>
-                <div className="text-zinc-300">nikhil11754@gmail.com</div>
+                <div className="text-gray-300">nikhil11754@gmail.com</div>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <div className="bg-[#183153] p-3 rounded-full">
+              <div className="bg-gray-800 p-3 rounded-full">
                 <svg
-                  className="w-6 h-6 text-sky-400"
+                  className="w-6 h-6 text-white"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -59,13 +59,13 @@ const Contact = () => {
               </div>
               <div>
                 <div className="font-semibold text-white">Phone</div>
-                <div className="text-zinc-300">+91 8791974146</div>
+                <div className="text-gray-300">+91 8791974146</div>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <div className="bg-[#183153] p-3 rounded-full">
+              <div className="bg-gray-800 p-3 rounded-full">
                 <svg
-                  className="w-6 h-6 text-sky-400"
+                  className="w-6 h-6 text-white"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -85,7 +85,7 @@ const Contact = () => {
               </div>
               <div>
                 <div className="font-semibold text-white">Location</div>
-                <div className="text-zinc-300">Uttar Pradesh, Meerut</div>
+                <div className="text-gray-300">Uttar Pradesh, Meerut</div>
               </div>
             </div>
           </div>

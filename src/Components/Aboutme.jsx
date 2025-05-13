@@ -18,11 +18,11 @@ const floatingLogos = [
 
 const Aboutme = () => {
   return (
-    <div id="about" className="min-h-screen bg-[#0A0F1C] text-white py-16 md:py-25 overflow-x-hidden">
+    <div id="about" className="min-h-screen bg-black text-white py-16 md:py-25 overflow-x-hidden">
       <h1 className="text-4xl md:text-5xl font-bold px-4 md:px-10 mb-3 flex justify-center items-center">
         About Me
       </h1>
-      <div className="w-18 h-1 bg-gradient-to-r from-sky-400 to-blue-500 rounded mb-10 md:mb-15 mx-auto"></div>
+      <div className="w-18 h-1 bg-gradient-to-r from-white to-gray-400 rounded mb-10 md:mb-15 mx-auto"></div>
       <div className="flex flex-col lg:flex-row flex-wrap gap-8 md:gap-10 px-4 md:px-10 items-center lg:items-start justify-center">
         {/* Floating logos instead of image */}
         <div className="relative w-full max-w-xs md:max-w-[33vw] min-h-[220px] flex items-center justify-center mb-6 lg:mb-0">

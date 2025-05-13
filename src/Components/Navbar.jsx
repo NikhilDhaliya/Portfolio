@@ -41,12 +41,12 @@ export const Navbar = () => {
           backgroundColor: "#38BDF8",
         }}
       />
-      <nav className="bg-[#0B101D]/70 backdrop-blur-md h-16 md:h-[9vh] text-[#ADB3BD] flex justify-between items-center px-4 md:px-12 w-full fixed left-0 top-0 z-50">
+      <nav className="bg-black/70 backdrop-blur-md h-16 md:h-[9vh] text-white flex justify-between items-center px-4 md:px-12 w-full fixed left-0 top-0 z-50">
         <div className="logo flex items-center">
           <h1 className="text-white font-bold text-[22px] md:text-[26px] cursor-pointer">
             Port
           </h1>
-          <h1 className="text-[#309FD3] font-bold text-[22px] md:text-[26px] cursor-pointer">
+          <h1 className="text-white font-bold text-[22px] md:text-[26px] cursor-pointer">
             folio
           </h1>
         </div>
@@ -57,7 +57,7 @@ export const Navbar = () => {
               key={index}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className="hover:text-white transition-colors duration-300 cursor-pointer"
+              className="hover:text-gray-300 transition-colors duration-300 cursor-pointer"
             >
               {item.name}
             </a>
@@ -69,9 +69,9 @@ export const Navbar = () => {
           onClick={() => setOpen((prev) => !prev)}
           aria-label="Toggle menu"
         >
-          <span className={`block h-1 w-7 rounded bg-sky-400 transition-all ${open ? "rotate-45 translate-y-2" : ""}`}></span>
-          <span className={`block h-1 w-7 rounded bg-sky-400 transition-all ${open ? "opacity-0" : ""}`}></span>
-          <span className={`block h-1 w-7 rounded bg-sky-400 transition-all ${open ? "-rotate-45 -translate-y-2" : ""}`}></span>
+          <span className={`block h-1 w-7 rounded bg-white transition-all ${open ? "rotate-45 translate-y-2" : ""}`}></span>
+          <span className={`block h-1 w-7 rounded bg-white transition-all ${open ? "opacity-0" : ""}`}></span>
+          <span className={`block h-1 w-7 rounded bg-white transition-all ${open ? "-rotate-45 -translate-y-2" : ""}`}></span>
         </button>
         {/* Mobile Menu & Overlay */}
         {open && (
