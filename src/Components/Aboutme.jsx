@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import AboutCards from "./AboutCards";
 import { FaDiagramProject } from "react-icons/fa6";
@@ -17,14 +18,14 @@ const floatingLogos = [
 
 const Aboutme = () => {
   return (
-    <div id="about" className="h-screen bg-[#0A0F1C] text-white py-25">
-      <h1 className="text-5xl font-bold px-10 mb-3 flex justify-center items-center">
+    <div id="about" className="min-h-screen bg-[#0A0F1C] text-white py-16 md:py-25 overflow-x-hidden">
+      <h1 className="text-4xl md:text-5xl font-bold px-4 md:px-10 mb-3 flex justify-center items-center">
         About Me
       </h1>
-      <div className="w-18 h-1 bg-gradient-to-r from-sky-400 to-blue-500 rounded mb-15 mx-auto"></div>
-      <div className="flex gap-10 px-10">
+      <div className="w-18 h-1 bg-gradient-to-r from-sky-400 to-blue-500 rounded mb-10 md:mb-15 mx-auto"></div>
+      <div className="flex flex-col lg:flex-row flex-wrap gap-8 md:gap-10 px-4 md:px-10 items-center lg:items-start justify-center">
         {/* Floating logos instead of image */}
-        <div className="relative w-[33vw] min-w-[220px] flex items-center justify-center ">
+        <div className="relative w-full max-w-xs md:max-w-[33vw] min-h-[220px] flex items-center justify-center mb-6 lg:mb-0">
           {floatingLogos.map((logo, i) => (
             <motion.img
               key={logo.alt}
@@ -64,24 +65,24 @@ const Aboutme = () => {
             />
           ))}
         </div>
-        <div className="aboutme flex flex-col juustify-center">
-          <h2 className="text-3xl font-bold mb-4">
+        <div className="aboutme flex flex-col justify-center w-full max-w-2xl">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center lg:text-left">
             Full Stack Developer & Problem Solver
           </h2>
-          <p className="text-[16px] mb-1">
+          <p className="text-[15px] md:text-[16px] mb-1 text-center lg:text-left">
             I'm a curious and motivated B.Tech 2nd-year student with a growing
             passion for full-stack web development. I enjoy turning ideas into
             interactive experiences and love the process of building things from
             the ground up—from planning to deployment.
           </p>
-          <p className="text-[16px] mb-6">
-            In the past 2 years, I’ve worked on several small projects and one
-            major project that helped me apply what I’ve learned and improve my
-            skills. I’m continuously exploring technologies like React, Node.js,
+          <p className="text-[15px] md:text-[16px] mb-6 text-center lg:text-left">
+            In the past 2 years, I've worked on several small projects and one
+            major project that helped me apply what I've learned and improve my
+            skills. I'm continuously exploring technologies like React, Node.js,
             and version control with Git to build modern, responsive, and
             efficient applications.
           </p>
-          <div className="cards flex gap-5">
+          <div className="cards flex flex-col sm:flex-row flex-wrap gap-4 md:gap-5 items-center lg:items-start justify-center lg:justify-start w-full">
             <AboutCards
               title="Experience"
               description="2 Years"

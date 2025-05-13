@@ -12,3 +12,7 @@ html {
 .polygon-bg {
   background: url('/assets/skills/polygon-bg.svg') center/cover no-repeat, #222;
 }
+
+body {
+  overflow-x: hidden;
+}

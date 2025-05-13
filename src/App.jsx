@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Navbar } from "./Components/Navbar";
+import Navbar from "./Components/Navbar";
 import Main from "./Components/Main";
 import Aboutme from "./Components/Aboutme";
 import Skills from "./Components/Skills";
