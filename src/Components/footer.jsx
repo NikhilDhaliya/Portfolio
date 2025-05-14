@@ -2,7 +2,10 @@ import React from "react";
 
 const Footer = ({ homeRef }) => {
   return (
-    <footer id="footer" className="bg-black border-t border-gray-800 py-8">
+    <footer
+      id="footer"
+      className="bg-transparent border-t border-gray-800 py-8"
+    >
       <div className="flex flex-col items-center gap-4">
         {/* Navigation Links */}
         <nav className="flex gap-8 mb-2">

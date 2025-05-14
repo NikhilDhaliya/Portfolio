@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import ParticleField from "./ParticleField";
 import FluidShape from "./FluidShape";
+import AnimatedText from "./AnimatedText";
 
 const Main = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -27,17 +27,15 @@ const Main = () => {
   return (
     <div
       id="home"
-      className="relative w-full h-screen bg-black flex flex-col justify-center items-center md:items-start px-4 md:px-12 lg:px-24 py-12 md:py-0 overflow-hidden"
+      className="relative w-full h-screen bg-transparent flex flex-col justify-center items-center md:items-start px-4 md:px-12 lg:px-24 py-12 md:py-0 overflow-hidden"
       data-scroll="true"
     >
-      {/* Refined gradient background - more subtle and professional */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0a] to-black z-0"></div>
+      {/* Removed solid background to allow global elegant background to show through */}
 
       {/* Subtle vignette overlay for more depth */}
       <div className="absolute inset-0 bg-radial-gradient z-[1] opacity-70 pointer-events-none"></div>
 
-      {/* Professional 3D Particle Background */}
-      <ParticleField className="opacity-80" />
+      {/* Elegant 2D Background now applied globally */}
 
       {/* Refined Fluid Shapes - More subtle and professional */}
       <FluidShape
@@ -81,7 +79,12 @@ const Main = () => {
         data-scroll-speed="0.1"
       >
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-bold text-center md:text-left leading-tight tracking-tight">
-          Hi, I'm Nikhil –{" "}
+          <AnimatedText
+            text="Hi, I'm Nikhil –"
+            type="character"
+            className="inline-block"
+            staggerChildren={0.02}
+          />{" "}
           <motion.span
             className="bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent"
             animate={{
@@ -91,12 +94,21 @@ const Main = () => {
           >
             Full Stack
           </motion.span>{" "}
-          <span className="block mt-1 md:inline">Web Developer</span>
+          <AnimatedText
+            text="Web Developer"
+            type="character"
+            className="block mt-1 md:inline"
+            delay={0.5}
+            staggerChildren={0.02}
+          />
         </h1>
 
-        <p className="text-gray-300 text-lg md:text-xl lg:text-2xl text-center md:text-left max-w-2xl font-light tracking-wide">
-          I craft elegant, responsive web applications with modern technologies
-        </p>
+        <AnimatedText
+          text="I craft elegant, responsive web applications with modern technologies"
+          type="paragraph"
+          className="text-gray-300 text-lg md:text-xl lg:text-2xl text-center md:text-left max-w-2xl font-light tracking-wide"
+          delay={0.8}
+        />
 
         <div className="buttons flex flex-col sm:flex-row gap-4 md:gap-6 items-center md:items-start mt-4">
           <motion.a

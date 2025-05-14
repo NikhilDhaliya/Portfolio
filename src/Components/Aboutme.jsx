@@ -53,7 +53,7 @@ const Aboutme = () => {
       data-scroll="true"
       data-scroll-speed="0.1"
       id="about"
-      className="min-h-screen bg-black text-white py-16 md:py-25 overflow-x-hidden relative"
+      className="min-h-screen bg-transparent text-white py-16 md:py-25 overflow-x-hidden relative"
     >
       {/* Fluid Shapes - Black and White Theme */}
       <FluidShape

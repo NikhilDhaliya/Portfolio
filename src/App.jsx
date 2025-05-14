@@ -9,6 +9,7 @@ import Projects from "./Components/Projects";
 // import Contact from "./Components/Contact";
 import Footer from "./Components/footer";
 import ScrollProvider from "./Components/ScrollProvider";
+import ElegantBackground from "./Components/ElegantBackground";
 
 const App = () => {
   const homeRef = useRef(null);
@@ -16,7 +17,12 @@ const App = () => {
   return (
     <ScrollProvider>
       <AnimatePresence mode="wait">
-        <div className="w-full min-h-screen bg-black">
+        <div className="w-full min-h-screen bg-black relative">
+          {/* Global Elegant Background - increased z-index */}
+          <div className="fixed inset-0 z-[1] pointer-events-none">
+            <ElegantBackground className="opacity-80" />
+          </div>
+
           {/* Smooth scroll progress indicator */}
           <motion.div
             className="fixed top-0 left-0 right-0 h-1 bg-white z-50 origin-left"

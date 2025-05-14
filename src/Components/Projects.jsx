@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import ProjectCard from "./ProjectCard";
 import { motion } from "framer-motion";
 import FluidShape from "./FluidShape";
+import AnimatedText from "./AnimatedText";
 
 const projects = [
   {
@@ -30,7 +32,7 @@ const Projects = () => {
   return (
     <div
       id="projects"
-      className="text-white bg-black w-full min-h-screen flex flex-col items-center relative overflow-hidden"
+      className="text-white bg-transparent w-full min-h-screen flex flex-col items-center relative overflow-hidden"
       data-scroll="true"
       data-scroll-speed="0.1"
     >
@@ -49,10 +51,19 @@ const Projects = () => {
         delay={2}
       />
       <div className="header mt-10 flex flex-col gap-4 px-4 md:px-10 py-6 w-full max-w-5xl relative z-10">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl m-auto mb-4 font-bold text-center bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent">
-          My Projects
-        </h1>
-        <div className="w-24 h-1 bg-gradient-to-r from-white via-gray-400 to-white rounded-full mx-auto mb-8"></div>
+        <AnimatedText
+          text="My Projects"
+          type="character"
+          className="text-3xl sm:text-4xl md:text-5xl m-auto mb-4 font-bold text-center bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent"
+          staggerChildren={0.03}
+        />
+        <motion.div
+          className="w-24 h-1 bg-gradient-to-r from-white via-gray-400 to-white rounded-full mx-auto mb-8"
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+        ></motion.div>
       </div>
 
       <div className="cards flex flex-col md:flex-row flex-wrap gap-8 md:gap-10 justify-center items-center w-full px-4 pb-16 relative z-10">

@@ -65,7 +65,7 @@ const positions = [
 const Skills = () => (
   <section
     id="skills"
-    className="bg-black w-full min-h-[90vh] flex flex-col items-center justify-center py-16 relative"
+    className="bg-transparent w-full min-h-[90vh] flex flex-col items-center justify-center py-16 relative"
     data-scroll="true"
     data-scroll-speed="0.1"
   >
