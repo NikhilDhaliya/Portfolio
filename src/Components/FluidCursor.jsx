@@ -4,12 +4,12 @@ import AnimatedCursor from "react-animated-cursor";
 const FluidCursor = () => {
   return (
     <AnimatedCursor
+      trailingSpeed={10}
       innerSize={8}
       outerSize={8}
-      // Scale factors for normal and hover states
       innerScale={1.5}
-      outerScale={2.5}
-      outerAlpha={0}
+      outerScale={5}
+      outerAlpha={5}
       hasBlendMode={true}
       innerStyle={{
         backgroundColor: "white",
