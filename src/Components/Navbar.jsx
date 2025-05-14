@@ -10,7 +10,6 @@ export const Navbar = () => {
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#footer" },
   ];
 
@@ -38,7 +37,7 @@ export const Navbar = () => {
           right: 0,
           height: 4,
           originX: 0,
-          backgroundColor: "#38BDF8",
+          backgroundColor: "gray",
         }}
       />
       <nav className="bg-black/70 backdrop-blur-md h-16 md:h-[9vh] text-white flex justify-between items-center px-4 md:px-12 w-full fixed left-0 top-0 z-50">

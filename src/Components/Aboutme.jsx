@@ -6,21 +6,71 @@ import { GiGraduateCap } from "react-icons/gi";
 import { SiLeetcode } from "react-icons/si";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { motion } from "framer-motion";
+import FluidShape from "./FluidShape";
 
 // Example floating logos (replace src with your own or use skill icons)
 const floatingLogos = [
-  { src: "https://img.icons8.com/?size=100&id=wPohyHO_qO1a&format=png", alt: "React", size: 60, x: 0, y: 0 },
-  { src: "https://img.icons8.com/?size=100&id=20909&format=png", alt: "HTML5", size: 48, x: 80, y: 40 },
-  { src: "https://img.icons8.com/?size=100&id=7gdY5qNXaKC0&format=png", alt: "CSS3", size: 48, x: -70, y: 60 },
-  { src: "https://img.icons8.com/?size=100&id=Nkym0Ujb8VGI&format=png", alt: "JavaScript", size: 54, x: 60, y: -60 },
-  { src: "https://img.icons8.com/?size=100&id=38389&format=png", alt: "Git", size: 44, x: -60, y: -60 },
+  {
+    src: "https://img.icons8.com/?size=100&id=wPohyHO_qO1a&format=png",
+    alt: "React",
+    size: 60,
+    x: 0,
+    y: 0,
+  },
+  {
+    src: "https://img.icons8.com/?size=100&id=20909&format=png",
+    alt: "HTML5",
+    size: 48,
+    x: 80,
+    y: 40,
+  },
+  {
+    src: "https://img.icons8.com/?size=100&id=7gdY5qNXaKC0&format=png",
+    alt: "CSS3",
+    size: 48,
+    x: -70,
+    y: 60,
+  },
+  {
+    src: "https://img.icons8.com/?size=100&id=Nkym0Ujb8VGI&format=png",
+    alt: "JavaScript",
+    size: 54,
+    x: 60,
+    y: -60,
+  },
+  {
+    src: "https://img.icons8.com/?size=100&id=38389&format=png",
+    alt: "Git",
+    size: 44,
+    x: -60,
+    y: -60,
+  },
 ];
 
 const Aboutme = () => {
   return (
-    <div id="about" className="min-h-screen bg-black text-white py-16 md:py-25 overflow-x-hidden">
-      <h1 className="text-4xl md:text-5xl font-bold px-4 md:px-10 mb-3 flex justify-center items-center">
-        About Me
+    <div
+      data-scroll="true"
+      data-scroll-speed="0.1"
+      id="about"
+      className="min-h-screen bg-black text-white py-16 md:py-25 overflow-x-hidden relative"
+    >
+      {/* Fluid Shapes - Black and White Theme */}
+      <FluidShape
+        size={350}
+        color="bg-white/15"
+        position={{ top: "15%", right: "15%" }}
+        duration={12}
+      />
+      <FluidShape
+        size={250}
+        color="bg-gray-600/15"
+        position={{ bottom: "20%", left: "10%" }}
+        duration={10}
+        delay={1}
+      />
+      <h1 className="text-4xl md:text-5xl font-bold px-4 md:px-10 mb-3 flex justify-center items-center text-center">
+        <span className="mx-auto">About Me</span>
       </h1>
       <div className="w-18 h-1 bg-gradient-to-r from-white to-gray-400 rounded mb-10 md:mb-15 mx-auto"></div>
       <div className="flex flex-col lg:flex-row flex-wrap gap-8 md:gap-10 px-4 md:px-10 items-center lg:items-start justify-center">
@@ -38,21 +88,11 @@ const Aboutme = () => {
                 left: `calc(50% + ${logo.x}px)`,
                 top: `calc(50% + ${logo.y}px)`,
                 zIndex: 2,
-                filter: "drop-shadow(0 2px 12px #38BDF8aa)",
+                filter: "drop-shadow(0 2px 12px rgba(200, 200, 200, 0.6))",
               }}
               animate={{
-                y: [
-                  0,
-                  Math.sin(i) * 18 + 10,
-                  Math.cos(i) * -18 - 10,
-                  0,
-                ],
-                x: [
-                  0,
-                  Math.cos(i) * 10,
-                  Math.sin(i) * -10,
-                  0,
-                ],
+                y: [0, Math.sin(i) * 18 + 10, Math.cos(i) * -18 - 10, 0],
+                x: [0, Math.cos(i) * 10, Math.sin(i) * -10, 0],
                 rotate: [0, 10, -10, 0],
               }}
               transition={{
@@ -86,12 +126,12 @@ const Aboutme = () => {
             <AboutCards
               title="Experience"
               description="2 Years"
-              logo={<BsFillPersonLinesFill size={35} color="#38BDF8" />}
+              logo={<BsFillPersonLinesFill size={35} color="#FFFFFF" />}
             />
             <AboutCards
               title="Education"
               description="Pursuing B.Tech in CS"
-              logo={<GiGraduateCap size={38} color="#38BDF8" />}
+              logo={<GiGraduateCap size={38} color="#FFFFFF" />}
             />
             <AboutCards
               onClick={() => {
@@ -102,7 +142,7 @@ const Aboutme = () => {
               }}
               title="Projects"
               description="2+ Completed"
-              logo={<FaDiagramProject size={35} color="#38BDF8" />}
+              logo={<FaDiagramProject size={35} color="#FFFFFF" />}
             />
           </div>
         </div>

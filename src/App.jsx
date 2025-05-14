@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./Components/Navbar";
 import Main from "./Components/Main";
 import Aboutme from "./Components/Aboutme";
@@ -6,23 +8,50 @@ import Skills from "./Components/Skills";
 import Projects from "./Components/Projects";
 // import Contact from "./Components/Contact";
 import Footer from "./Components/footer";
+import ScrollProvider from "./Components/ScrollProvider";
+
 const App = () => {
   const homeRef = useRef(null);
 
   return (
-    <div className="w-full min-h-screen bg-black">
-      <Navbar />
-      {/* Attach the ref to your home section */}
-      <div ref={homeRef}>
-        <Main />
-      </div>
-      <Aboutme />
-      <Skills />
-      <Projects />
-      {/* <Contact /> */}
-      {/* Pass the ref to Footer if you want to use it there */}
-      <Footer homeRef={homeRef} />
-    </div>
+    <ScrollProvider>
+      <AnimatePresence mode="wait">
+        <div className="w-full min-h-screen bg-black">
+          {/* Smooth scroll progress indicator */}
+          <motion.div
+            className="fixed top-0 left-0 right-0 h-1 bg-white z-50 origin-left"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, ease: "linear" }}
+            style={{ transformOrigin: "0% 0%" }}
+          />
+
+          <Navbar />
+
+          {/* Main content with data-scroll attributes for animation */}
+          <div ref={homeRef} data-scroll-section="true">
+            <Main />
+          </div>
+
+          <div data-scroll-section="true">
+            <Aboutme />
+          </div>
+
+          <div data-scroll-section="true">
+            <Skills />
+          </div>
+
+          <div data-scroll-section="true">
+            <Projects />
+          </div>
+
+          {/* <Contact /> */}
+          <div data-scroll-section="true">
+            <Footer homeRef={homeRef} />
+          </div>
+        </div>
+      </AnimatePresence>
+    </ScrollProvider>
   );
 };
 
