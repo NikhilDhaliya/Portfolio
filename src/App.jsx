@@ -10,6 +10,8 @@ import Projects from "./Components/Projects";
 import Footer from "./Components/footer";
 import ScrollProvider from "./Components/ScrollProvider";
 import ElegantBackground from "./Components/ElegantBackground";
+import FluidCursor from "./Components/FluidCursor";
+
 
 const App = () => {
   const homeRef = useRef(null);
@@ -18,6 +20,9 @@ const App = () => {
     <ScrollProvider>
       <AnimatePresence mode="wait">
         <div className="w-full min-h-screen bg-black relative">
+          {/* Custom Fluid Cursor */}
+          <FluidCursor />
+
           {/* Global Elegant Background - increased z-index */}
           <div className="fixed inset-0 z-[1] pointer-events-none">
             <ElegantBackground className="opacity-80" />
