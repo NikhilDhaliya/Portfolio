@@ -6,8 +6,9 @@ const FluidCursor = () => {
     <AnimatedCursor
       innerSize={8}
       outerSize={8}
-      innerScale={1}
-      outerScale={1.7}
+      // Scale factors for normal and hover states
+      innerScale={1.5}
+      outerScale={2.5}
       outerAlpha={0}
       hasBlendMode={true}
       innerStyle={{
