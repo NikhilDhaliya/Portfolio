@@ -4,7 +4,7 @@ import AnimatedCursor from "react-animated-cursor";
 const FluidCursor = () => {
   return (
     <AnimatedCursor
-      trailingSpeed={10}
+      trailingSpeed={1}
       innerSize={8}
       outerSize={8}
       innerScale={1.5}
