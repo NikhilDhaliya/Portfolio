@@ -89,7 +89,7 @@ const Skills = () => (
       />
     </div>
 
-    <h1 className="text-5xl text-white font-semibold mb-4">My Skills</h1>
+    <h1 className="text-5xl text-white font-semibold mb-4">TechStack</h1>
     <div className="w-18 h-1 bg-gradient-to-r from-white to-gray-400 rounded mb-10 md:mb-15 mx-auto"></div>
     <div
       className="relative mx-auto w-full max-w-xs h-60 md:max-w-[700px] md:h-[500px] lg:max-w-[1200px] overflow-hidden md:overflow-visible"
