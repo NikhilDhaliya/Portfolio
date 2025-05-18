@@ -67,7 +67,7 @@ const Skills = () => (
     id="skills"
     className="bg-transparent w-full min-h-[90vh] flex flex-col items-center justify-center py-16 relative"
     data-scroll="true"
-    data-scroll-speed="0.1"
+    data-scroll-speed="0.05"
   >
     {/* Single Fluid Shape for better performance */}
     <div

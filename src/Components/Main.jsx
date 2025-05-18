@@ -62,7 +62,7 @@ const Main = () => {
         }}
         transition={{ type: "spring", stiffness: 100, damping: 30 }}
         data-scroll="true"
-        data-scroll-speed="0.1"
+        data-scroll-speed="0.05"
       >
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-bold text-center md:text-left leading-tight tracking-tight">
           <AnimatedText

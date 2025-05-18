@@ -12,7 +12,7 @@ const Aboutme = () => {
   return (
     <div
       data-scroll="true"
-      data-scroll-speed="0.1"
+      data-scroll-speed="0.05"
       id="about"
       className="min-h-screen bg-transparent text-white py-16 md:py-24 overflow-hidden relative"
     >

@@ -34,7 +34,7 @@ const Projects = () => {
       id="projects"
       className="text-white bg-transparent w-full min-h-screen flex flex-col items-center relative overflow-hidden"
       data-scroll="true"
-      data-scroll-speed="0.1"
+      data-scroll-speed="0.05"
     >
       {/* Fluid Shapes - Black and White Theme */}
       <FluidShape
