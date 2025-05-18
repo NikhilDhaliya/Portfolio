@@ -69,23 +69,16 @@ const Skills = () => (
     data-scroll="true"
     data-scroll-speed="0.1"
   >
-    {/* Fluid Shapes - Black and White Theme - Repositioned to avoid overlap with icons */}
+    {/* Single Fluid Shape for better performance */}
     <div
       className="absolute inset-0 overflow-hidden pointer-events-none"
       style={{ zIndex: 0 }}
     >
       <FluidShape
         size={400}
-        color="bg-white/10"
+        color="bg-white/08" // Reduced opacity
         position={{ top: "5%", right: "5%" }}
-        duration={12}
-      />
-      <FluidShape
-        size={300}
-        color="bg-gray-500/10"
-        position={{ bottom: "5%", left: "5%" }}
-        duration={10}
-        delay={1}
+        duration={20} // Slower animation for better performance
       />
     </div>
 

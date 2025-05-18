@@ -17,23 +17,23 @@ export const ScrollProvider = ({ children }) => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Initialize Locomotive Scroll
+    // Initialize Locomotive Scroll with optimized settings
     scrollRef.current = new LocomotiveScroll({
       el: containerRef.current,
       smooth: true,
-      multiplier: 0.8,
-      lerp: 0.08,
+      multiplier: 0.7, // Reduced for better performance
+      lerp: 0.1, // Increased for less CPU usage
       smartphone: {
-        smooth: true,
-        multiplier: 0.9,
+        smooth: false, // Disabled on mobile for better performance
+        multiplier: 1,
       },
       tablet: {
-        smooth: true,
+        smooth: false, // Disabled on tablets for better performance
         breakpoint: 768,
-        multiplier: 0.9,
+        multiplier: 1,
       },
       reloadOnContextChange: true,
-      inertia: 0.6,
+      inertia: 0.4, // Reduced for better performance
     });
 
     // Update scroll on page load

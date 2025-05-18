@@ -33,10 +33,14 @@ const FluidCursor = () => {
         ".card",
         '[role="button"]',
       ]}
+      // Performance optimizations
       trailStyle={{
         backgroundColor: "white",
       }}
       showTrail={true}
+      trailLength={5} // Reduced from default for better performance
+      trailOpacity={0.5} // Reduced opacity for better performance
+      fps={30} // Reduced from 60fps to 30fps for better performance
     />
   );
 };

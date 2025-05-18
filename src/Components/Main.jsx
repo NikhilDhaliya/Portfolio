@@ -37,33 +37,19 @@ const Main = () => {
 
       {/* Elegant 2D Background now applied globally */}
 
-      {/* Refined Fluid Shapes - More subtle and professional */}
+      {/* Reduced number of Fluid Shapes for better performance */}
       <FluidShape
         size={400}
         color="bg-white/10"
         position={{ top: "10%", right: "15%" }}
-        duration={15}
+        duration={20} // Slower animation for better performance
       />
       <FluidShape
         size={300}
         color="bg-gray-400/08"
         position={{ bottom: "15%", left: "10%" }}
-        duration={18}
+        duration={24} // Slower animation for better performance
         delay={2}
-      />
-      <FluidShape
-        size={220}
-        color="bg-gray-600/08"
-        position={{ top: "35%", left: "25%" }}
-        duration={12}
-        delay={1}
-      />
-      <FluidShape
-        size={180}
-        color="bg-white/06"
-        position={{ bottom: "35%", right: "25%" }}
-        duration={14}
-        delay={3}
       />
 
       {/* Content with parallax effect */}

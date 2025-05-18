@@ -6,15 +6,15 @@ const ElegantBackground = ({ className = "" }) => {
   const particlesRef = useRef([]);
   const animationFrameRef = useRef(null);
 
-  // Configuration for the particles - optimized for global background
+  // Configuration for the particles - optimized for performance
   const config = {
-    particleCount: 150,
+    particleCount: 80, // Reduced from 150 for better performance
     particleSize: { min: 1, max: 3 },
-    speed: { min: 0.1, max: 0.4 },
-    connectionDistance: 200,
+    speed: { min: 0.05, max: 0.2 }, // Reduced speed for less CPU usage
+    connectionDistance: 150, // Reduced connection distance
     colors: [
-      "rgba(255, 255, 255, 0.7)",
-      "rgba(220, 220, 220, 0.5)",
+      "rgba(255, 255, 255, 0.5)",
+      "rgba(220, 220, 220, 0.4)",
       "rgba(200, 200, 200, 0.3)",
     ],
   };
@@ -99,21 +99,31 @@ const ElegantBackground = ({ className = "" }) => {
       context.fillStyle = particle.color;
       context.fill();
 
-      // Draw connections
-      for (let j = index + 1; j < particlesRef.current.length; j++) {
-        const otherParticle = particlesRef.current[j];
-        const dx = particle.x - otherParticle.x;
-        const dy = particle.y - otherParticle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+      // Draw connections - optimized for performance
+      // Only check connections for every 3rd particle
+      if (index % 3 === 0) {
+        // Limit the number of particles to check
+        const checkLimit = Math.min(particlesRef.current.length, index + 10);
+        for (let j = index + 1; j < checkLimit; j++) {
+          const otherParticle = particlesRef.current[j];
+          const dx = particle.x - otherParticle.x;
+          const dy = particle.y - otherParticle.y;
 
-        if (distance < config.connectionDistance) {
-          const opacity = 1 - distance / config.connectionDistance;
-          context.beginPath();
-          context.moveTo(particle.x, particle.y);
-          context.lineTo(otherParticle.x, otherParticle.y);
-          context.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.25})`;
-          context.lineWidth = 0.4;
-          context.stroke();
+          // Quick distance check using squared distance (avoids expensive sqrt)
+          const distSquared = dx * dx + dy * dy;
+          const connectionDistSquared =
+            config.connectionDistance * config.connectionDistance;
+
+          if (distSquared < connectionDistSquared) {
+            const distance = Math.sqrt(distSquared); // Only calculate sqrt when needed
+            const opacity = 1 - distance / config.connectionDistance;
+            context.beginPath();
+            context.moveTo(particle.x, particle.y);
+            context.lineTo(otherParticle.x, otherParticle.y);
+            context.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.2})`;
+            context.lineWidth = 0.4;
+            context.stroke();
+          }
         }
       }
     });
