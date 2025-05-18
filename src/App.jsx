@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./Components/Navbar";
@@ -6,12 +5,10 @@ import Main from "./Components/Main";
 import Aboutme from "./Components/Aboutme";
 import Skills from "./Components/Skills";
 import Projects from "./Components/Projects";
-// import Contact from "./Components/Contact";
 import Footer from "./Components/footer";
 import ScrollProvider from "./Components/ScrollProvider";
 import ElegantBackground from "./Components/ElegantBackground";
 import FluidCursor from "./Components/FluidCursor";
-
 
 const App = () => {
   const homeRef = useRef(null);
@@ -56,7 +53,6 @@ const App = () => {
             <Projects />
           </div>
 
-          {/* <Contact /> */}
           <div data-scroll-section="true">
             <Footer homeRef={homeRef} />
           </div>
