@@ -2,12 +2,10 @@ import React, { createContext, useContext, useRef, useEffect } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 
-// Create context
 const ScrollContext = createContext({
   scroll: null,
 });
 
-// Hook to use the scroll context
 export const useLocoScroll = () => useContext(ScrollContext);
 
 export const ScrollProvider = ({ children }) => {
@@ -17,31 +15,29 @@ export const ScrollProvider = ({ children }) => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Initialize Locomotive Scroll with slower, smoother settings
     scrollRef.current = new LocomotiveScroll({
       el: containerRef.current,
       smooth: true,
-      multiplier: 0.4, // Significantly reduced for slower scrolling
-      lerp: 0.05, // Smoother transitions
+      multiplier: 0.4,
+      lerp: 0.05,
       smartphone: {
-        smooth: false, // Disabled on mobile for better performance
-        multiplier: 0.5, // Slower scrolling on mobile
+        smooth: false,
+        multiplier: 0.5,
       },
       tablet: {
-        smooth: false, // Disabled on tablets for better performance
+        smooth: false,
         breakpoint: 768,
-        multiplier: 0.5, // Slower scrolling on tablets
+        multiplier: 0.5,
       },
       reloadOnContextChange: true,
-      inertia: 0.3, // Reduced for smoother scrolling
+      inertia: 0.3, 
     });
 
-    // Update scroll on page load
     setTimeout(() => {
       scrollRef.current.update();
     }, 500);
 
-    // Cleanup
+
     return () => {
       if (scrollRef.current) {
         scrollRef.current.destroy();
@@ -50,7 +46,6 @@ export const ScrollProvider = ({ children }) => {
     };
   }, []);
 
-  // Update scroll on resize
   useEffect(() => {
     const handleResize = () => {
       if (scrollRef.current) {

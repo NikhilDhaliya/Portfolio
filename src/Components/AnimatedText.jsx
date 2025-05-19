@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -5,7 +6,7 @@ const AnimatedText = ({
   text, 
   className = "", 
   once = true,
-  type = "heading", // heading, paragraph, or character
+  type = "heading",
   delay = 0,
   duration = 0.05,
   staggerChildren = 0.03,
@@ -14,7 +15,6 @@ const AnimatedText = ({
   // Split text into words and characters
   const words = text.split(' ');
   
-  // Animation variants for different types
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({

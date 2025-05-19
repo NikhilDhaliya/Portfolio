@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-*{
-  font-family: 'Poppins', sans-serif;
+* {
+  font-family: "Poppins", sans-serif;
 }
 
 html {
@@ -10,7 +10,7 @@ html {
 
 /* Add to your index.css or a global stylesheet */
 .polygon-bg {
-  background: url('/assets/skills/polygon-bg.svg') center/cover no-repeat, #222;
+  background: url("/assets/skills/polygon-bg.svg") center/cover no-repeat, #222;
 }
 
 body {

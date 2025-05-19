@@ -23,24 +23,19 @@ const ElegantBackground = ({ className = "" }) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // Set canvas dimensions
     const handleResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       initParticles();
     };
 
-    // Initialize canvas context
     contextRef.current = canvas.getContext("2d");
     handleResize();
 
-    // Add event listener for window resize
     window.addEventListener("resize", handleResize);
 
-    // Start animation
     startAnimation();
 
-    // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
       if (animationFrameRef.current) {
@@ -50,7 +45,6 @@ const ElegantBackground = ({ className = "" }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Initialize particles
   const initParticles = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -80,29 +74,19 @@ const ElegantBackground = ({ className = "" }) => {
     const context = contextRef.current;
     if (!canvas || !context) return;
 
-    // Clear canvas
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Update and draw particles
     particlesRef.current.forEach((particle, index) => {
-      // Update position
       particle.x += particle.speedX;
       particle.y += particle.speedY;
 
-      // Boundary check
       if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
       if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
-
-      // Draw particle
       context.beginPath();
       context.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
       context.fillStyle = particle.color;
       context.fill();
-
-      // Draw connections - optimized for performance
-      // Only check connections for every 3rd particle
       if (index % 3 === 0) {
-        // Limit the number of particles to check
         const checkLimit = Math.min(particlesRef.current.length, index + 10);
         for (let j = index + 1; j < checkLimit; j++) {
           const otherParticle = particlesRef.current[j];
