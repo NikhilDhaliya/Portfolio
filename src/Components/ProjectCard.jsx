@@ -15,9 +15,12 @@ const ProjectCard = ({
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const cardRef = useRef(null);
   const imageRef = useRef(null);
   const contentRef = useRef(null);
+
+  const descriptionCharLimit = 150;
 
   // Check if mobile on mount
   useEffect(() => {
@@ -78,7 +81,7 @@ const ProjectCard = ({
       }}
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="relative group w-full max-w-xs md:w-[350px] md:h-[420px] h-[420px] rounded-2xl overflow-hidden shadow-xl border border-gray-800 bg-black/80 backdrop-blur-md flex flex-col justify-end"
+      className="relative group w-full max-w-xs md:w-[350px] min-h-[420px] rounded-2xl overflow-hidden shadow-xl border border-gray-800 bg-black/80 backdrop-blur-md flex flex-col justify-end"
     >
       {/* Glow effect on hover - Black and White Theme */}
       <motion.div
@@ -165,10 +168,21 @@ const ProjectCard = ({
           }}
           transition={{ duration: 0.3, delay: 0.2 }}
         >
-          {description}
+          {isDescriptionExpanded || description.length <= descriptionCharLimit
+            ? description
+            : `${description.substring(0, descriptionCharLimit)}...`}
         </motion.p>
 
-        <div className="flex gap-4 flex-wrap">
+        {description.length > descriptionCharLimit && (
+          <button
+            onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+            className="text-blue-400 hover:underline text-xs text-left self-start focus:outline-none"
+          >
+            {isDescriptionExpanded ? "Read Less" : "Read More"}
+          </button>
+        )}
+
+        <div className="flex gap-4 flex-wrap mt-4">
           <motion.a
             href={liveDemo}
             target="_blank"
