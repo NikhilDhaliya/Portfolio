@@ -122,7 +122,7 @@ const ProjectCard = ({
         </h2>
       </motion.div>
 
-      {/* Content with 3D effect - Always visible on mobile, fades in on desktop hover */}
+      {/* Content with 3D effect - Always visible */}
       <motion.div
         ref={contentRef}
         className="relative z-10 flex flex-col h-full justify-end p-4 md:p-7"
@@ -131,8 +131,8 @@ const ProjectCard = ({
           transformStyle: "preserve-3d",
         }}
         animate={{
-          opacity: isHovered ? 1 : isMobile ? 1 : 0,
-          y: isHovered ? 0 : 20,
+          opacity: 1,
+          y: 0,
         }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
