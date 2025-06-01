@@ -139,7 +139,7 @@ const ProjectCard = ({
         }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
-        <div className="flex gap-2 mb-2 flex-wrap">
+        <div className="flex gap-2 mb-2 flex-wrap min-h-[50px]">
           {tags.map((tag, i) => (
             <motion.span
               key={i}
