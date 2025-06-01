@@ -111,13 +111,13 @@ const ProjectCard = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent pointer-events-none" />
       </motion.div>
 
-      {/* Title - Default Position (Top Left) - Only visible on desktop */}
+      {/* Title - Default Position (Top Left) - Always visible */}
       <motion.div
-        className="relative z-10 p-4 md:p-7 hidden md:block"
-        animate={{ opacity: isHovered ? 0 : 1 }}
+        className="relative z-10 p-4 md:p-7"
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
       >
-        <h2 className="text-xl md:text-2xl font-bold text-white/40 group-hover:text-white transition-colors duration-500">
+        <h2 className="text-xl md:text-2xl font-bold text-white/90 group-hover:text-white transition-colors duration-500">
           {title}
         </h2>
       </motion.div>
@@ -136,20 +136,6 @@ const ProjectCard = ({
         }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
-        <motion.h2
-          className="text-xl md:text-2xl font-bold text-white mb-2 card-title relative w-max"
-          whileHover={{ scale: 1.05 }}
-        >
-          {title}
-          <motion.div
-            className="h-1 w-full bg-white mt-1"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: isHovered ? 1 : 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            style={{ originX: 0 }}
-          />
-        </motion.h2>
-
         <div className="flex gap-2 mb-2 flex-wrap">
           {tags.map((tag, i) => (
             <motion.span
@@ -204,27 +190,29 @@ const ProjectCard = ({
           >
             Live Demo
           </motion.a>
-          <motion.a
-            href={github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-black border border-white text-white font-semibold px-4 py-1.5 rounded-md shadow hover:bg-gray-900 transition text-sm"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{
-              opacity: isHovered ? 1 : 0,
-              y: isHovered ? 0 : 20,
-            }}
-            transition={{
-              duration: 0.3,
-              delay: 0.4,
-              type: "spring",
-              stiffness: 300,
-            }}
-          >
-            GitHub
-          </motion.a>
+          {github && (
+            <motion.a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-black border border-white text-white font-semibold px-4 py-1.5 rounded-md shadow hover:bg-gray-900 transition text-sm"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{
+                opacity: isHovered ? 1 : 0,
+                y: isHovered ? 0 : 20,
+              }}
+              transition={{
+                duration: 0.3,
+                delay: 0.4,
+                type: "spring",
+                stiffness: 300,
+              }}
+            >
+              GitHub
+            </motion.a>
+          )}
         </div>
       </motion.div>
     </motion.div>
