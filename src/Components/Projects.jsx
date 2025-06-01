@@ -11,7 +11,7 @@ const projects = [
       "https://i.pinimg.com/736x/94/f5/33/94f5338ac8094e7dc55f020643b00b3b.jpg",
     title: "SkillSprint",
     description:
-      "SkillSprint is a full-stack web application that empowers students and developers to discover hackathons, build or join teams, collaborate on projects, and showcase their skills. The platform streamlines the process of hackathon participation with intuitive registration, team management, and developer profiles, creating a centralized hub for innovation and collaboration.",
+      "SkillSprint is a full-stack platform that helps students and developers discover hackathons, build or join teams, collaborate on projects, and showcase their skills—all in one centralized hub.",
     tags: ["React", "Tailwind", "Node.js", "Express", "MongoDB Atlas"],
     liveDemo: "https://skillsprint-frontend-hmxp.onrender.com/"
   },
