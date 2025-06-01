@@ -125,7 +125,7 @@ const ProjectCard = ({
         </h2>
       </motion.div>
 
-      {/* Content with 3D effect - Always visible */}
+      {/* Content with 3D effect - Always visible on mobile, fades in on desktop hover */}
       <motion.div
         ref={contentRef}
         className="relative z-10 flex flex-col h-full justify-end p-4 md:p-7"
@@ -134,8 +134,8 @@ const ProjectCard = ({
           transformStyle: "preserve-3d",
         }}
         animate={{
-          opacity: 1,
-          y: 0,
+          opacity: isHovered ? 1 : isMobile ? 1 : 0,
+          y: isHovered ? 0 : 20,
         }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
@@ -173,7 +173,7 @@ const ProjectCard = ({
             : `${description.substring(0, descriptionCharLimit)}...`}
         </motion.p>
 
-        {description.length > descriptionCharLimit && (
+        {description.length > descriptionCharLimit && isHovered && (
           <button
             onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
             className="text-blue-400 hover:underline text-xs text-left self-start focus:outline-none"
