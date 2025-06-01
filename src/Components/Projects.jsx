@@ -13,7 +13,7 @@ const projects = [
     description:
       "SkillSprint is a full-stack web application that empowers students and developers to discover hackathons, build or join teams, collaborate on projects, and showcase their skills. The platform streamlines the process of hackathon participation with intuitive registration, team management, and developer profiles, creating a centralized hub for innovation and collaboration.",
     tags: ["React", "Tailwind", "Framer Motion"],
-    liveDemo: "https://skillsprint-frontend-hmxp.onrender.com/",
+    liveDemo: "https://skillsprint-frontend-hmxp.onrender.com/"
   },
   {
     image:
@@ -23,8 +23,8 @@ const projects = [
       "A web-based solution designed to help farmers and gardeners identify pests and recommend appropriate treatments. PestiCare aims to support sustainable farming by providing an accessible pest diagnosis and prevention tool.",
     tags: ["Full Stack", "Machine Learning"],
     liveDemo: "https://nikhildhaliya.github.io/PestiCare_Project/",
-    github: "https://github.com/NikhilDhaliya/PestiCare",
-  },
+    github: "https://github.com/NikhilDhaliya/PestiCare"
+  }
 ];
 
 const Projects = () => {
