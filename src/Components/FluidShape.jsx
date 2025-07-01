@@ -8,6 +8,7 @@ const FluidShape = ({
   duration = 8,
   delay = 0,
   className = "",
+  animate = true,
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -40,21 +41,22 @@ const FluidShape = ({
         width: size,
         height: size,
         ...position,
-        filter: "blur(100px)", // Increased blur for a more subtle, professional look
-        opacity: 0.5, // Further reduced opacity for subtlety
-        zIndex: 0, // Lower z-index to prevent interference with interactive elements
-        mixBlendMode: "screen", // Improved blending for a more refined look
-        pointerEvents: "none", // Ensure it doesn't capture any mouse events
+        filter: "blur(60px)", // Lowered blur for better performance
+        opacity: 0.5,
+        zIndex: 0,
+        mixBlendMode: "screen",
+        pointerEvents: "none",
+        willChange: "transform", // Hint for GPU acceleration
       }}
       initial={{ opacity: 0 }}
-      animate={isMounted ? "animate" : "initial"}
+      animate={isMounted && animate ? "animate" : "initial"}
       variants={variants}
       transition={{
         duration: duration,
         ease: "easeInOut",
-        times: [0, 0.35, 0.7, 1], // Slightly adjusted timing for more natural movement
+        times: [0, 0.35, 0.7, 1],
         repeat: Infinity,
-        repeatType: "mirror", // Mirror instead of loop for smoother transitions
+        repeatType: "mirror",
         delay: delay,
       }}
     />

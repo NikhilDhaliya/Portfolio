@@ -3,19 +3,44 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import FluidShape from "./FluidShape";
 import AnimatedText from "./AnimatedText";
+import Spline from '@splinetool/react-spline';
+import { useLocoScroll } from "./ScrollProvider";
+
+// Utility: Throttle function
+function throttle(fn, limit) {
+  let inThrottle;
+  let lastArgs;
+  return function (...args) {
+    if (!inThrottle) {
+      fn.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => {
+        inThrottle = false;
+        if (lastArgs) {
+          fn.apply(this, lastArgs);
+          lastArgs = null;
+        }
+      }, limit);
+    } else {
+      lastArgs = args;
+    }
+  };
+}
 
 const Main = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const textRef = useRef(null);
+  const mainRef = useRef(null);
+  const [isSplineVisible, setIsSplineVisible] = useState(true);
+  const { scroll } = useLocoScroll();
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = throttle((e) => {
       // Calculate mouse position relative to the window
       const x = e.clientX / window.innerWidth - 0.5;
       const y = e.clientY / window.innerHeight - 0.5;
-
       setMousePosition({ x, y });
-    };
+    }, 32); // ~30fps
 
     window.addEventListener("mousemove", handleMouseMove);
 
@@ -24,8 +49,21 @@ const Main = () => {
     };
   }, []);
 
+  // Intersection Observer for Spline visibility
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => setIsSplineVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (mainRef.current) observer.observe(mainRef.current);
+    return () => {
+      if (mainRef.current) observer.unobserve(mainRef.current);
+    };
+  }, []);
+
   return (
     <div
+      ref={mainRef}
       id="home"
       className="relative w-full h-screen bg-transparent flex flex-col justify-center items-center md:items-start px-4 md:px-12 lg:px-24 py-12 md:py-0 overflow-hidden"
       data-scroll="true"
@@ -43,6 +81,7 @@ const Main = () => {
         color="bg-white/10"
         position={{ top: "10%", right: "15%" }}
         duration={20} // Slower animation for better performance
+        animate={isSplineVisible}
       />
       <FluidShape
         size={300}
@@ -50,7 +89,19 @@ const Main = () => {
         position={{ bottom: "15%", left: "10%" }}
         duration={24} // Slower animation for better performance
         delay={2}
+        animate={isSplineVisible}
       />
+
+      {/* Spline 3D scene on the right (hidden on mobile) */}
+      <div
+        className="hidden md:block absolute right-0 top-15 h-full w-1/2 z-20 pointer-events-none cursor-auto"
+        style={{
+          opacity: isSplineVisible ? 1 : 0,
+          transition: 'opacity 0.6s cubic-bezier(0.4,0,0.2,1)',
+        }}
+      >
+        <Spline scene="https://prod.spline.design/Xb9pp8RNMn6kQiW9/scene.splinecode" />
+      </div>
 
       {/* Content with parallax effect */}
       <motion.div
@@ -59,6 +110,7 @@ const Main = () => {
         style={{
           x: mousePosition.x * -20, // Subtle parallax effect
           y: mousePosition.y * -20,
+          willChange: "transform", // Hint for GPU acceleration
         }}
         transition={{ type: "spring", stiffness: 100, damping: 30 }}
         data-scroll="true"
@@ -97,8 +149,8 @@ const Main = () => {
         />
 
         <div className="buttons flex flex-col sm:flex-row gap-4 md:gap-6 items-center md:items-start mt-4">
-          <motion.a
-            href="#projects"
+          <motion.button
+            type="button"
             className="bg-white text-black font-medium px-8 py-3 rounded-sm cursor-pointer relative h-12 w-48 overflow-hidden border-0 shadow-lg transition-all flex items-center justify-center text-center tracking-wide"
             whileHover={{
               scale: 1.03,
@@ -107,9 +159,17 @@ const Main = () => {
             }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            onClick={() => {
+              const el = document.querySelector("#projects");
+              if (scroll && el) {
+                scroll.scrollTo(el, { duration: 800, disableLerp: false });
+              } else if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
           >
             View Projects
-          </motion.a>
+          </motion.button>
 
           <motion.a
             href="/Resume.pdf"

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import AboutCards from "./AboutCards";
 import { FaDiagramProject } from "react-icons/fa6";
 import { GiGraduateCap } from "react-icons/gi";
@@ -7,10 +7,27 @@ import { SiLeetcode } from "react-icons/si";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { motion } from "framer-motion";
 import FluidShape from "./FluidShape";
+import { useLocoScroll } from "./ScrollProvider";
 
 const Aboutme = () => {
+  const aboutRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const { scroll } = useLocoScroll();
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (aboutRef.current) observer.observe(aboutRef.current);
+    return () => {
+      if (aboutRef.current) observer.unobserve(aboutRef.current);
+    };
+  }, []);
+
   return (
     <div
+      ref={aboutRef}
       data-scroll="true"
       data-scroll-speed="0.05"
       id="about"
@@ -22,6 +39,7 @@ const Aboutme = () => {
         color="bg-white/10"
         position={{ top: "15%", right: "15%" }}
         duration={12}
+        animate={isVisible}
       />
       <FluidShape
         size={250}
@@ -29,6 +47,7 @@ const Aboutme = () => {
         position={{ bottom: "20%", left: "10%" }}
         duration={10}
         delay={1}
+        animate={isVisible}
       />
 
       {/* Section Title with Animation */}
@@ -154,9 +173,11 @@ const Aboutme = () => {
             >
               <AboutCards
                 onClick={() => {
-                  const section = document.getElementById("projects");
-                  if (section) {
-                    section.scrollIntoView({ behavior: "smooth" });
+                  const el = document.querySelector("#projects");
+                  if (scroll && el) {
+                    scroll.scrollTo(el, { duration: 800, disableLerp: false });
+                  } else if (el) {
+                    el.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
                 title="Projects"

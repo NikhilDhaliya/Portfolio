@@ -4,8 +4,8 @@
   font-family: "Poppins", sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
+html, body {
+  /* Removed scroll-behavior: smooth to avoid conflict with Locomotive Scroll */
 }
 
 /* Add to your index.css or a global stylesheet */
@@ -15,4 +15,9 @@ html {
 
 body {
   overflow-x: hidden;
+}
+
+.spline-viewer-canvas, canvas[data-engine="spline"] {
+  cursor: auto !important;
+  pointer-events: none !important;
 }

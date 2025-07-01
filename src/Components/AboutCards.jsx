@@ -10,7 +10,7 @@ const AboutCards = ({ title, description, logo, onClick }) => {
       onClick={onClick}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      className="card flex flex-col gap-3 justify-center items-center w-full max-w-xs md:w-[220px] md:h-[200px] rounded-md bg-black/50 backdrop-blur-sm border border-gray-800 shadow-lg px-4 py-6 cursor-pointer relative overflow-hidden"
+      className="card flex flex-col gap-3 justify-center items-center w-full max-w-xs md:w-[220px] md:h-[200px] rounded-md bg-white/10 backdrop-blur-sm border border-white/10 shadow-lg px-4 py-6 cursor-pointer relative overflow-hidden"
       whileHover={{
         y: -8,
         scale: 1.03,

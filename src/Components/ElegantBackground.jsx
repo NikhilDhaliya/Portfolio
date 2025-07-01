@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-const ElegantBackground = ({ className = "" }) => {
+const ElegantBackground = ({ className = "", bgAnimate = true }) => {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
   const particlesRef = useRef([]);
@@ -34,7 +34,7 @@ const ElegantBackground = ({ className = "" }) => {
 
     window.addEventListener("resize", handleResize);
 
-    startAnimation();
+    if (bgAnimate) startAnimation();
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -43,7 +43,7 @@ const ElegantBackground = ({ className = "" }) => {
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [bgAnimate]);
 
   const initParticles = () => {
     const canvas = canvasRef.current;

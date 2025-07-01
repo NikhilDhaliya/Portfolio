@@ -150,4 +150,4 @@ const AnimatedText = ({
   );
 };
 
-export default AnimatedText;
+export default React.memo(AnimatedText);

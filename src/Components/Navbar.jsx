@@ -1,27 +1,42 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { motion, useScroll } from "framer-motion";
+import { useLocoScroll } from "./ScrollProvider";
 
 export const Navbar = () => {
   const { scrollYProgress } = useScroll();
   const [open, setOpen] = useState(false);
+  const { scroll } = useLocoScroll();
 
   const links = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
+    { name: "TechStack", href: "#skills" },
     { name: "Contact", href: "#footer" },
   ];
 
   // Scroll to top for Home link
   const handleNavClick = (e, href) => {
-    if (href === "#home") {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setOpen(false);
+    e.preventDefault();
+    if (scroll) {
+      if (href === "#home") {
+        scroll.scrollTo(0, { duration: 800, disableLerp: false });
+      } else {
+        const el = document.querySelector(href);
+        if (el) {
+          scroll.scrollTo(el, { duration: 800, disableLerp: false });
+        }
+      }
     } else {
-      setOpen(false);
+      // fallback
+      if (href === "#home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
     }
+    setOpen(false);
   };
 
   return (
@@ -40,7 +55,7 @@ export const Navbar = () => {
           backgroundColor: "gray",
         }}
       />
-      <nav className="bg-black/70 backdrop-blur-md h-16 md:h-[9vh] text-white flex justify-between items-center px-4 md:px-12 w-full fixed left-0 top-0 z-50">
+      <nav className="bg-black/70 backdrop-blur-md h-16 md:h-[9vh] text-white flex justify-between items-center px-4 md:px-12 w-full fixed left-0 top-0 z-50 border-b border-white/10 shadow-lg shadow-white/5">
         <div className="logo flex items-center">
           <h1 className="text-white font-bold text-[22px] md:text-[26px] cursor-pointer">
             Port

@@ -85,7 +85,7 @@ const Skills = () => (
     <h1 className="text-5xl text-white font-semibold mb-4">TechStack</h1>
     <div className="w-18 h-1 bg-gradient-to-r from-white to-gray-400 rounded mb-10 md:mb-15 mx-auto"></div>
     <div
-      className="relative mx-auto w-full max-w-xs h-60 md:max-w-[700px] md:h-[500px] lg:max-w-[1200px] overflow-hidden md:overflow-visible"
+      className="relative mx-auto w-full max-w-xs h-60 md:max-w-[700px] md:h-[500px] lg:max-w-[1600px] overflow-hidden md:overflow-visible"
       style={{ zIndex: 5 }}
     >
       {skills.map((skill, i) => {
@@ -101,9 +101,9 @@ const Skills = () => (
             }}
             whileHover={{
               scale: 1.2,
-              left: `calc(${pos.left} + ${Math.random() > 0.5 ? 1.5 : -1.5}%)`,
-              top: `calc(${pos.top} + ${Math.random() > 0.5 ? 1.5 : -1.5}%)`,
-              rotate: pos.rotate + (Math.random() > 0.5 ? 8 : -8),
+              left: `calc(${pos.left} + 2%)`,
+              top: `calc(${pos.top} - 2%)`,
+              rotate: pos.rotate + 8,
               zIndex: 20,
               filter: "drop-shadow(0 0 15px rgba(255, 255, 255, 0.3))",
               transition: { type: "spring", stiffness: 300, damping: 15 },

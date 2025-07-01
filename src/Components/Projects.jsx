@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import { motion } from "framer-motion";
 import FluidShape from "./FluidShape";
 import AnimatedText from "./AnimatedText";
+import ProjectMap from "./ProjectMap";
 
 const projects = [
   {
@@ -31,58 +32,14 @@ const Projects = () => {
   return (
     <div
       id="projects"
-      className="text-white bg-transparent w-full min-h-screen flex flex-col items-center relative overflow-hidden"
+      className="w-full min-h-screen flex flex-col items-center justify-center py-20 px-2 md:px-0 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden"
       data-scroll="true"
       data-scroll-speed="0.05"
     >
-      {/* Fluid Shapes - Black and White Theme */}
-      <FluidShape
-        size={400}
-        color="bg-white/15"
-        position={{ top: "15%", left: "10%" }}
-        duration={12}
-      />
-      <FluidShape
-        size={350}
-        color="bg-gray-600/15"
-        position={{ bottom: "20%", right: "10%" }}
-        duration={10}
-        delay={2}
-      />
-      <div className="header mt-10 flex flex-col gap-4 px-4 md:px-10 py-6 w-full max-w-5xl relative z-10">
-        <AnimatedText
-          text="My Projects"
-          type="character"
-          className="text-3xl sm:text-4xl md:text-5xl m-auto mb-4 font-bold text-center bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent"
-          staggerChildren={0.03}
-        />
-        <motion.div
-          className="w-24 h-1 bg-gradient-to-r from-white via-gray-400 to-white rounded-full mx-auto mb-8"
-          initial={{ scaleX: 0, opacity: 0 }}
-          whileInView={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true }}
-        ></motion.div>
-      </div>
-
-      <div className="cards flex flex-col md:flex-row flex-wrap gap-8 md:gap-10 justify-center items-center w-full px-4 pb-16 relative z-10">
-        {projects.map((proj, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: i * 0.2,
-              type: "spring",
-              stiffness: 100,
-            }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <ProjectCard {...proj} />
-          </motion.div>
-        ))}
-      </div>
+      <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white drop-shadow-lg tracking-tight bg-gradient-to-r from-blue-300 via-pink-200 to-purple-300 bg-clip-text text-transparent">
+        My Projects
+      </h2>
+      <ProjectMap />
     </div>
   );
 };
