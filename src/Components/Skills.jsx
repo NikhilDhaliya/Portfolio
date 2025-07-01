@@ -62,6 +62,21 @@ const positions = [
   { left: "60%", top: "80%", rotate: 14 },
 ];
 
+const iconVariants = {
+  hidden: { opacity: 0, scale: 0.7, y: 40 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.12,
+      type: "spring",
+      stiffness: 180,
+      damping: 18,
+    },
+  }),
+};
+
 const Skills = () => (
   <section
     id="skills"
@@ -84,9 +99,13 @@ const Skills = () => (
 
     <h1 className="text-5xl text-white font-semibold mb-4">TechStack</h1>
     <div className="w-18 h-1 bg-gradient-to-r from-white to-gray-400 rounded mb-10 md:mb-15 mx-auto"></div>
-    <div
+    <motion.div
       className="relative mx-auto w-full max-w-xs h-60 md:max-w-[700px] md:h-[500px] lg:max-w-[1600px] overflow-hidden md:overflow-visible"
       style={{ zIndex: 5 }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={{}}
     >
       {skills.map((skill, i) => {
         const pos = positions[i % positions.length];
@@ -99,6 +118,8 @@ const Skills = () => (
               top: pos.top,
               rotate: pos.rotate,
             }}
+            custom={i}
+            variants={iconVariants}
             whileHover={{
               scale: 1.2,
               left: `calc(${pos.left} + 2%)`,
@@ -135,7 +156,7 @@ const Skills = () => (
           </motion.div>
         );
       })}
-    </div>
+    </motion.div>
   </section>
 );
 
